@@ -2,7 +2,7 @@ import React from 'react'
 import {Navbar} from 'react-bootstrap'
 
 const NavMenu = () => (
-    <Navbar className="Nav">
+    <Navbar>
         <Navbar.Header>
             <Navbar.Brand>
                 <p className="Logo">Localee</p>
