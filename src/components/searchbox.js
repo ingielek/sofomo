@@ -31,11 +31,14 @@ const Searchbox = createReactClass({
             return 'error';
 
     },
-    handleChange(e) {
-        this.setState({ value: e.target.value });
+    handleChange(event) {
+        this.setState({ value: event.target.value });
     },
 
-    render() {
+    handleSubmit(event) {
+        event.preventDefault();
+    },
+        render() {
         return (
             <div>
             <Grid>
@@ -56,15 +59,18 @@ const Searchbox = createReactClass({
                                 value={this.state.value}
                                 placeholder="Enter IP or URL"
                                 onChange={this.handleChange}
+                                onSubmit={this.handleSubmit}
                             />
                             <FormControl.Feedback />
                             <HelpBlock>Validation is based upon IP or URL</HelpBlock>
                         </FormGroup>
                     </form>
                     </Col>
-                    <Col xs={2} md={3} lg={1}>
-                        <SearchButton/>
-                    </Col>
+                    <FormGroup>
+                        <Col xs={2} md={3} lg={1}>
+                            <SearchButton/>
+                        </Col>
+                    </FormGroup>
                 </Row>
             </Grid>
             </div>

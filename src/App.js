@@ -2,23 +2,23 @@ import React, { Component } from 'react';
 import {Grid, Row, Col} from 'react-bootstrap'
 import './App.css';
 import NavMenu from './components/navbar'
-import UserLoc from './components/userlocation'
+import SimpleMap from './components/userlocation'
 import SearchBox from './components/searchbox'
+import InfoUserLocation from './components/informationUserLoc'
 import axios from 'axios'
-
 class App extends Component {
 
     constructor(){
         super();
         this.state = {
-            country : ''
+            location: []
         };
     }
     componentDidMount() {
-        axios.get('freegeoip.net/json/www.ppe.pl')
+        onclick(this.props.onClick).axios.get('http://freegeoip.net/json/www.ppe.pl')
             .then(response => {
                 this.setState({
-                    country: response
+                    location: response.data
                 });
             })
             .catch(error => {
@@ -27,6 +27,7 @@ class App extends Component {
     }
 
   render() {
+        console.log(this.state.location)
     return (
       <div >
         <Grid>
@@ -35,14 +36,12 @@ class App extends Component {
                     <NavMenu/>
                 </Col>
             </Row>
-            <Row className="show-grid">
-                  <Col>
-                      <UserLoc/>
-                  </Col>
-            </Row>
               <Row className="show-grid">
-                  <Col>
+                  <Col xs={5} md={6} lg={7}>
                       <SearchBox/>
+                  </Col>
+                  <Col xs={3} md={4} lg={5}>
+                      <InfoUserLocation data={this.state.location}/>
                   </Col>
               </Row>
           </Grid>
