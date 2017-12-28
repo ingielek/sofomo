@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios'
-import InfoUserLocation from './InformationUserLocation'
+import InfoUserLocation from './informationUserLoc'
 
 class Searchy extends React.Component{
     constructor(props) {
@@ -36,7 +36,7 @@ class Searchy extends React.Component{
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Name:
+                        Type in IP or URL
                         <input type="text" value={this.state.value} onChange={this.handleChange} />
                     </label>
                     <input type="submit" value="Submit" onSubmit={this.handleSubmit}/>
