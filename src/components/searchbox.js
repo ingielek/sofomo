@@ -1,5 +1,7 @@
 import React from 'react'
 import {form,
+        ButtonToolbar,
+        Button,
         FormGroup,
         ControlLabel,
         FormControl,
@@ -8,8 +10,6 @@ import {form,
         Grid,
         Col,
         } from 'react-bootstrap'
-import SearchButton from './searchbutton'
-
 const createReactClass = require('create-react-class');
 
 const Searchbox = createReactClass({
@@ -20,12 +20,12 @@ const Searchbox = createReactClass({
     },
 
     getValidationState() {
-        const val = this.state.value;
+        const Val = this.state.value;
         var ipRegex = new RegExp('\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b');
         var urlValidator = require('valid-url');
-        if(val == 0)
+        if(Val == 0)
             return null;
-        else if(urlValidator.isWebUri(val) || ipRegex.test(val))
+        else if(urlValidator.isWebUri(Val) || ipRegex.test(Val))
             return 'success';
         else
             return 'error';
@@ -33,6 +33,7 @@ const Searchbox = createReactClass({
     },
     handleChange(event) {
         this.setState({ value: event.target.value });
+
     },
 
     handleSubmit(event) {
@@ -68,7 +69,9 @@ const Searchbox = createReactClass({
                     </Col>
                     <FormGroup>
                         <Col xs={2} md={3} lg={1}>
-                            <SearchButton/>
+                            <ButtonToolbar>
+                                <Button type="submit" onSubmit={this.handleSubmit}>Search!</Button>
+                            </ButtonToolbar>
                         </Col>
                     </FormGroup>
                 </Row>
@@ -80,3 +83,4 @@ const Searchbox = createReactClass({
 });
 
 export default Searchbox
+

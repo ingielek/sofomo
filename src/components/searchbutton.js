@@ -4,7 +4,7 @@ import {ButtonToolbar,
 
 const SearchButton = () => (
     <ButtonToolbar>
-        <Button onClick={this.props.onClick} type="submit">Search!</Button>
+        <Button type="submit">Search!</Button>
     </ButtonToolbar>
 );
 
