@@ -48,7 +48,7 @@ class App extends Component {
                 <Row>
                     <Row className="show-grid">
                         <Col xs={12} md={12} lg={12}>
-                            <div style={{width: '75%', height: '200px'}}>
+                            <div>
                                 <GoogleMap data={this.state.location}/>
                             </div>
                         </Col>
