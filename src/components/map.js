@@ -1,40 +1,23 @@
-import React from 'react'
-import GoogleMapReact from 'google-map-react'
-import GoogleMap from 'google-map-react'
+import React, {Component} from 'react'
+const google = window.google;
+class GoogleMap extends Component{
+    componentDidMount() {
+        new google.maps.Map(this.refs.map, {
+            zoom: 12,
+            center: {
+                lat: this.props.data.latitude,
+                lng: this.props.data.longitude
+            }
+        });
 
-const AnyReactComponent = ({ text }) => (<div style={{
-    position: 'relative', color: 'white', background: 'red',
-    height: 20, width: 40, top: -20, left: -30,
-}}>
-    {text}
-</div>
-);
-
-class Map extends React.Component {
-    static defaultProps = {
-        zoom: 11
-    };
-
-    render() {
+    }
+    render(){
         return (
-            <GoogleMapReact
-                defaultCenter={this.props.center}
-                defaultZoom={this.props.zoom}
-            >
-                <GoogleMap
-                    bootstrapURLKeys={{
-                        key: "AIzaSyAck9qDZwhM3ShYJNoDLtBDxufZXYLO_5M",
-                        language: 'pl',
-                    }}
-                />
-                <AnyReactComponent
-                    lat={this.props.data.latitude}
-                    lng={this.props.data.longitude}
-                    text={'Here!'}
-                />
-            </GoogleMapReact>
-        );
+            <div ref="map" />
+        )
     }
 }
 
-export default Map
+export default GoogleMap
+
+

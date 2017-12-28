@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Grid, Row, Col} from 'react-bootstrap'
 import './App.css';
 import NavMenu from './components/navbar'
-import Map from './components/map'
+import GoogleMap from './components/map'
 import InfoUserLocation from './components/informationUserLoc'
 import axios from 'axios'
 
@@ -49,7 +49,7 @@ class App extends Component {
                     <Row className="show-grid">
                         <Col xs={12} md={12} lg={12}>
                             <div style={{width: '75%', height: '200px'}}>
-                                <Map data={this.state.location}/>
+                                <GoogleMap data={this.state.location}/>
                             </div>
                         </Col>
                     </Row>
