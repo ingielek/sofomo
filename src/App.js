@@ -12,7 +12,8 @@ class App extends Component {
         super(props);
         this.state = {
             location: [],
-            value: ''
+            value: '',
+            history: []
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -28,7 +29,7 @@ class App extends Component {
         axios.get('http://freegeoip.net/json/' + this.state.value)
             .then(response => {
                 this.setState({
-                    location: response.data
+                    location: response.data,
                 });
             })
             .catch(error => {
