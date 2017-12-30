@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import {Grid, Row, Col} from 'react-bootstrap'
 import './App.css';
 import NavMenu from './components/navbar'
-import GoogleMap from './components/map'
-import InfoUserLocation from './components/informationUserLoc'
+import LastSearchMap from './components/lastSearchMap'
+import InfoLastSearch from './components/informationLastSearch'
+import UserLocationMap from './components/userLocationMap'
+
 import axios from 'axios'
 
 class App extends Component {
@@ -44,21 +46,16 @@ class App extends Component {
     return (
       <div >
         <Grid>
-            <Row>
+            <Row className="show-grid">
                 <Col xs={12} md={12} lg={12}>
                     <NavMenu/>
                 </Col>
-                <Row>
+            </Row>
                     <Row className="show-grid">
-                        <Col xs={12} md={12} lg={12}>
-                            <div>
-                                <GoogleMap data={this.state.location}/>
-                            </div>
+                        <Col>
+                                <UserLocationMap/>
                         </Col>
                     </Row>
-
-                </Row>
-            </Row>
               <Row className="show-grid">
                   <Col xs={4} md={4} lg={4}>
 
@@ -72,10 +69,16 @@ class App extends Component {
                               <input type="submit" value="Submit" onSubmit={this.handleSubmit}/>
                           </form>
                        </Col>
-                          <Col xs={5} md={4} lg={4}>
-                              <InfoUserLocation data={this.state.location}/>
-                          </Col>
+
               </Row>
+            <Row className="show-grid">
+                <Col xs={7} md={8} lg={8}>
+                    <LastSearchMap data={this.state.location}/>
+                </Col>
+                <Col xs={5} md={4} lg={4}>
+                    <InfoLastSearch data={this.state.location}/>
+                </Col>
+            </Row>
           </Grid>
       </div>
     );

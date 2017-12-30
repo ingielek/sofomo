@@ -2,7 +2,7 @@ import React from 'react'
 import {Row,
         Col,
         Grid} from 'react-bootstrap'
-const InfoUserLocation = (props) => (
+const InfoLastSearch = (props) => (
 
         <Grid>
             <Row className="show-grid">
@@ -22,4 +22,4 @@ const InfoUserLocation = (props) => (
             </Row>
         </Grid>
     );
-export default InfoUserLocation
+export default InfoLastSearch
