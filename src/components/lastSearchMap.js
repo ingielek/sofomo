@@ -15,10 +15,13 @@ class LastSearchMap extends Component {
             });
 
             }
-    newLocation = () => {
+
+    newLocation = (props) => {
+        let lat = this.props.data.latitude;
+        let long = this.props.data.longitude;
         new google.maps.setCenter(this.refs.map, {
             zoom: 12,
-            center: new google.maps.LatLng(52.5200, 13.4050)
+            center: new google.maps.LatLng(lat, long)
         });
     };
         render()

@@ -7,6 +7,7 @@ const InfoLastSearch = (props) => (
         <Grid>
             <Row className="show-grid">
                 <Col xs={3} md={4} lg={4}>
+                    <div className="UserLocationPara">
                     <p>{props.data.ip}</p>
                     <p>{props.data.country_code}</p>
                     <p>{props.data.country_name}</p>
@@ -18,6 +19,7 @@ const InfoLastSearch = (props) => (
                     <p>{props.data.latitude}</p>
                     <p>{props.data.longitude}</p>
                     <p>{props.data.metro_code}</p>
+                    </div>
                 </Col>
             </Row>
         </Grid>
