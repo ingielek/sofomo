@@ -20,7 +20,7 @@ class LastSearchMap extends Component {
             <Grid>
                 <Row className="show-grid">
                     <Col xs={7} md={8} lg={8}>
-                        <div className="GoogleMap" ref="map"/>
+                        <div onSubmit={this.handleSubmit} className="GoogleMap" ref="map"/>
                     </Col>
                 </Row>
             </Grid>

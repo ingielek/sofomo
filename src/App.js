@@ -18,31 +18,44 @@ class App extends Component {
     }
     handleChange(event) {
         this.setState({value: event.target.value});
-        const inputVal = this.state.value
     }
 
 
 
     handleSubmit(event) {
         event.preventDefault();
+        var ipRegex = new RegExp('\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b');
+        var urlValidator = new RegExp('((ftp|http|https):\\/\\/)?');
         if (this.state.value === ""){
             return;
-        } else {
+        } else if ((urlValidator.test(this.state.value) || ipRegex.test(this.state.value))) {
             axios.get('http://freegeoip.net/json/' + this.state.value)
                 .then(response => {
                     this.setState({
                         location: response.data,
-                    });
+                    })
+                    .then(sessionStorage.setItem(this.state.value, JSON.stringify(this.state.value)))
                 })
                 .catch(error => {
                     console.log("Error", error)
-                })
+                });
+        } else {
+            return (
+                alert("Wrong IP or web address")
+            );
         }
     }
     render() {
     return (
       <div >
         <Grid>
+            <Row className="show-grid">
+                <Col>
+                    <ul>
+                        <li>{JSON.parse(sessionStorage.getItem(this.state.value, this.state.value))}</li>
+                    </ul>
+                </Col>
+            </Row>
             <Row className="show-grid">
                 <Col>
                     <p><strong>This is Your Location</strong></p>
