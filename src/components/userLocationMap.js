@@ -11,7 +11,6 @@ class UserLocationMap extends Component {
         this.state={
             user: []
         };
-
     }
     componentDidMount() {
         axios.get('http://freegeoip.net/json/')
@@ -23,11 +22,11 @@ class UserLocationMap extends Component {
             .catch(error => {
                 console.log("Error", error)
             });
+    }
+    componentWillUpdate(){
         new google.maps.Map(this.refs.map, {
             zoom: 12,
             center: new google.maps.LatLng(this.state.user.latitude, this.state.user.longitude),
-
-
         });
     }
 
@@ -44,7 +43,6 @@ class UserLocationMap extends Component {
                     </Col>
                 </Row>
             </Grid>
-
         )
     }
 }

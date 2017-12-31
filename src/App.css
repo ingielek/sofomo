@@ -18,8 +18,11 @@
   display: block;
 }
 
-.UserLocationPara{
-  height: 100px;
+.UserLocationPara {
+  height: 300px;
+  width: 250px;
   font-size: 13px;
   margin-left: 15px;
+  line-height: 18px;
 }
+

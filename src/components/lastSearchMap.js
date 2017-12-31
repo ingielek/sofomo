@@ -1,37 +1,32 @@
 import React, {Component} from 'react'
+import {Grid,
+    Row,
+    Col} from 'react-bootstrap'
 const google = window.google;
 class LastSearchMap extends Component {
     constructor(props) {
         super(props);
-        this.newLocation = this.newLocation.bind(this)
     }
-        componentDidMount()
-        {
-            new google.maps.Map(this.refs.map, {
-                zoom: 12,
-                center: new google.maps.LatLng(51.5074, 0.1278),
 
-
-            });
-
-            }
-
-    newLocation = (props) => {
-        let lat = this.props.data.latitude;
-        let long = this.props.data.longitude;
-        new google.maps.setCenter(this.refs.map, {
+    shouldComponentUpdate() {
+        new google.maps.Map(this.refs.map, {
             zoom: 12,
-            center: new google.maps.LatLng(lat, long)
+            center: new google.maps.LatLng(this.props.data.latitude, this.props.data.longitude),
         });
-    };
-        render()
-        {
-            return (
-                <div onSubmit={this.newLocation} className="GoogleMap" ref="map"/>
-            )
-        }
     }
-
+    render()
+    {
+        return (
+            <Grid>
+                <Row className="show-grid">
+                    <Col xs={7} md={8} lg={8}>
+                        <div className="GoogleMap" ref="map"/>
+                    </Col>
+                </Row>
+            </Grid>
+        )
+    }
+}
 export default LastSearchMap
 
 
