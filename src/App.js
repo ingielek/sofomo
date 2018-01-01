@@ -4,6 +4,7 @@ import './App.css';
 import LastSearchMap from './components/lastSearchMap'
 import InfoLastSearch from './components/informationLastSearch'
 import UserLocationMap from './components/userLocationMap'
+import SearchList from './components/SearchList'
 import axios from 'axios'
 
 class App extends Component {
@@ -12,7 +13,7 @@ class App extends Component {
         this.state = {
             location: [],
             value: '',
-            history: []
+            history: [],
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,10 +37,14 @@ class App extends Component {
                         location: response.data,
                     })
                 })
-                .then(sessionStorage.setItem(this.state.value, JSON.stringify(this.state.location)))
+                .then(sessionStorage.setItem(this.state.value, JSON.stringify(this.state.value)))
                 .catch(error => {
                     console.log("Error", error)
                 });
+            this.setState({
+                history: this.state.history + this.state.value + ", " ,
+            });
+            console.log(this.state.history)
         } else {
             return (
                 alert("Wrong IP or web address")
@@ -47,40 +52,36 @@ class App extends Component {
         }
     }
     render() {
+
     return (
       <div >
         <Grid>
             <Row className="show-grid">
                 <Col>
-                    <ul>
-                        <li>{sessionStorage.getItem(this.state.value)}</li>
-                    </ul>
+                    <SearchList data={this.state.history}/>
                 </Col>
                 <Col>
-                    <p><strong>This is Your Location</strong></p>
+                    <p className="marginBottom"><strong>This is Your Location</strong></p>
                 </Col>
             </Row>
             <Row className="show-grid">
-                    <Col>
+                    <Col xs={7} md={8} lg={8}>
                         <UserLocationMap/>
                     </Col>
             </Row>
               <Row className="show-grid">
-                  <Col xs={4} md={4} lg={4}>
-                  </Col>
-                       <Col xs={5} md={6} lg={4}>
+                       <Col xs={5} md={4} lg={4}>
                           <form onSubmit={this.handleSubmit}>
-                              <label>
-                                  Type in IP or URL
-                                  <input type="text" value={this.state.value} onChange={this.handleChange} />
+                              <label className="marginTop">
+                                  Type in IP or URL and press enter
+                                  <input type="text" className="input-style" value={this.state.value} onSubmit={this.handleSubmit} onChange={this.handleChange} />
                               </label>
-                              <input type="submit" value="Submit" onSubmit={this.handleSubmit}/>
                           </form>
                        </Col>
               </Row>
             <Row className="show-grid">
                 <Col>
-                    <p><strong>This is Your search result</strong></p>
+                    <p className="marginBottomAndTop"><strong>This is Your search result</strong></p>
                 </Col>
             </Row>
             <Row className="show-grid">

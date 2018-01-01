@@ -1,21 +1,10 @@
-.Logo{
-  color: #060225 !important;
-  font-family: "Helvetica Neue";
-  font-size: 25px;
-}
-.Nav{
-  text-align: center;
-}
 
-.NavigationText{
-  color: whitesmoke;
-  text-shadow: black;
-}
 
 .GoogleMap{
   height: 300px;
   width: 800px;
   display: block;
+  z-index: 1;
 }
 
 .UserLocationPara {
@@ -25,4 +14,34 @@
   margin-left: 15px;
   line-height: 18px;
 }
+.SearchListPara {
+  font-size: 17px;
+}
 
+.input-style{
+  border: 0;
+  border-bottom: 2px solid midnightblue;
+  width: 100%;
+  font-size: 17px;
+  line-height: 20px;
+  height: 40px;
+  text-align: center;
+  padding: 10px;
+  background: transparent;
+  color: #122b40;
+  margin-left: 13px;
+  padding: 10px;
+}
+
+.marginTop{
+  margin-top: 35px;
+}
+.marginBottom{
+  margin-bottom: 35px;
+}
+
+.marginBottomAndTop{
+  margin-bottom: 35px;
+  margin-top: 35px;
+
+}

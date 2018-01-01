@@ -1,14 +1,15 @@
 import React from 'react'
 
-class PeopleList extends React.Component {
+class SearchList extends React.Component {
     render(){
-        const list = this.props.people.map(
-            person => <li>{person}</li>);
         return(
-            <ul>{list}</ul>
+            <div>
+                <p className="SearchListPara">List of searched websites or IP :</p>
+            <ul className="listSearched"><strong>{this.props.data}</strong></ul>
+            </div>
         )
 
     }
 }
 
-export default PeopleList;
+export default SearchList;
