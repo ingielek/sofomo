@@ -12,6 +12,7 @@ class App extends Component {
         this.state = {
             location: [],
             value: '',
+            history: []
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,8 +35,8 @@ class App extends Component {
                     this.setState({
                         location: response.data,
                     })
-                    .then(sessionStorage.setItem(this.state.value, JSON.stringify(this.state.value)))
                 })
+                .then(sessionStorage.setItem(this.state.value, JSON.stringify(this.state.location)))
                 .catch(error => {
                     console.log("Error", error)
                 });
@@ -52,11 +53,9 @@ class App extends Component {
             <Row className="show-grid">
                 <Col>
                     <ul>
-                        <li>{JSON.parse(sessionStorage.getItem(this.state.value, this.state.value))}</li>
+                        <li>{sessionStorage.getItem(this.state.value)}</li>
                     </ul>
                 </Col>
-            </Row>
-            <Row className="show-grid">
                 <Col>
                     <p><strong>This is Your Location</strong></p>
                 </Col>
