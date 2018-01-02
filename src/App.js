@@ -15,23 +15,23 @@ class App extends Component {
             value: '',
             history: [],
         };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(event) {
         this.setState({value: event.target.value});
+        this.handleChange = this.handleChange.bind(this);
     }
 
 
 
     handleSubmit(event) {
         event.preventDefault();
-        var ipRegex = new RegExp('\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b');
-        var urlValidator = new RegExp('((ftp|http|https):\\/\\/)?');
+        this.handleSubmit = this.handleSubmit.bind(this);
+        const ipRegex = new RegExp('\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b');
+        const urlValidator = new RegExp('((ftp|http|https):\\/\\/)?');
         if (this.state.value === ""){
             return;
         } else if ((urlValidator.test(this.state.value) || ipRegex.test(this.state.value))) {
-            axios.get('http://freegeoip.net/json/' + this.state.value)
+            axios.get('https://freegeoip.net/json/' + this.state.value)
                 .then(response => {
                     this.setState({
                         location: response.data,
